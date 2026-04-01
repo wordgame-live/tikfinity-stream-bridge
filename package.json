@@ -1,0 +1,32 @@
+{
+  "name": "tycoon-stream-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Lightweight local Tickfinity bridge for Word Tycoon streamer-mode game pages.",
+  "main": "server.js",
+  "type": "commonjs",
+  "bin": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "package:win": "pkg . --targets node18-win-x64 --output dist/TycoonStreamBridge.exe",
+    "package:folder": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package-folder.ps1"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "socket.io": "^4.8.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  },
+  "pkg": {
+    "assets": [
+      "public/**/*"
+    ],
+    "scripts": [
+      "src/**/*.js",
+      "server.js"
+    ]
+  }
+}
