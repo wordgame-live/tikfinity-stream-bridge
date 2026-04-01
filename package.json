@@ -12,7 +12,12 @@
     "build:icon": "node scripts/build-icon.js",
     "stamp:icon": "node scripts/stamp-exe-icon.js",
     "package:win": "npm run build:icon && pkg . --targets node18-win-x64 --output dist/TycoonStreamBridge.exe && npm run stamp:icon",
-    "package:folder": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package-folder.ps1"
+    "package:folder": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package-folder.ps1",
+    "package:mac:aarch64": "pkg . --targets node18-macos-arm64 --output dist/mac-aarch64/TycoonStreamBridge",
+    "package:mac:x64": "pkg . --targets node18-macos-x64 --output dist/mac-x64/TycoonStreamBridge",
+    "mac:prepare-sidecars": "node scripts/prepare-mac-sidecars.js",
+    "mac:dev": "npm --prefix mac-app run tauri:dev",
+    "mac:build": "npm --prefix mac-app run tauri:build"
   },
   "dependencies": {
     "express": "^4.21.0",

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tycoon Stream Bridge</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="hero">
+        <div class="hero-brand">
+          <img class="hero-logo" src="/src/assets/wordtycoon-logo.png" alt="Word Tycoon" />
+          <div>
+            <p class="eyebrow">Word Tycoon Stream Tools</p>
+            <h1>Tycoon Stream Bridge</h1>
+            <p class="hero-copy">A tiny local launcher for TikFinity-powered streamer pages on macOS.</p>
+          </div>
+        </div>
+        <div class="status-pill" id="bridge-status-pill">Starting bridge...</div>
+      </header>
+
+      <main class="grid">
+        <section class="card card-highlight">
+          <div class="card-header">
+            <h2>Bridge Status</h2>
+            <span id="last-event">Waiting for events</span>
+          </div>
+          <div class="status-banner" id="status-banner">
+            <strong id="status-title">Starting bridge...</strong>
+            <p id="status-copy">The launcher is checking the local bridge and TikFinity connection.</p>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-label">Chat</span>
+              <span class="stat-value" id="stat-chat">0</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Engagement</span>
+              <span class="stat-value" id="stat-engagement">0</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Raw</span>
+              <span class="stat-value" id="stat-raw">0</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Bridge</span>
+              <span class="stat-value" id="stat-bridge">Booting</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            <h2>Launch</h2>
+            <span>Open your stream tools fast</span>
+          </div>
+          <div class="actions">
+            <button class="action action-primary" data-url="http://127.0.0.1:21420/">Open Dashboard</button>
+            <button class="action" data-url="https://rectangled.live/stream">Open RecTangled</button>
+            <button class="action" data-url="https://erectangled.com/stream">Open eRecTangled</button>
+            <button class="action" data-url="https://searchle.live/stream">Open Searchle</button>
+          </div>
+          <div class="helper">
+            <p>TikFinity should be open before you launch the game pages.</p>
+            <button class="link-btn" data-url="https://wordgame.live">Open Download Page</button>
+          </div>
+        </section>
+
+        <section class="card card-wide">
+          <div class="card-header">
+            <h2>Quick Help</h2>
+            <span>What to do when the bridge is idle</span>
+          </div>
+          <ol class="steps">
+            <li>Open TikFinity and make sure it is connected to your stream.</li>
+            <li>Keep Tycoon Stream Bridge open while you stream.</li>
+            <li>Use the game buttons above to open the `/stream` pages.</li>
+          </ol>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

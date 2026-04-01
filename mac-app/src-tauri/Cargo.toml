@@ -1,0 +1,19 @@
+[package]
+name = "tycoon-stream-bridge-mac"
+version = "0.1.0"
+description = "Tycoon Stream Bridge macOS launcher"
+authors = ["Word Tycoon"]
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2.0.1" }
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri = { version = "2.0.6" }
+tauri-plugin-shell = "2.0.1"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]

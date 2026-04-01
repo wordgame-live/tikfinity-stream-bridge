@@ -11,6 +11,7 @@ const PORT = Number(process.env.STREAM_BRIDGE_PORT || 21420);
 const HOST = process.env.STREAM_BRIDGE_HOST || '127.0.0.1';
 const TICKFINITY_WS_URL = process.env.TIKFINITY_WS_URL || process.env.TICKFINITY_WS_URL || 'ws://127.0.0.1:21213';
 const DEBUG_RAW_EVENTS = process.env.STREAM_BRIDGE_DEBUG_RAW === '1';
+const DISABLE_AUTO_OPEN = process.env.STREAM_BRIDGE_NO_BROWSER === '1';
 const SHOULD_OPEN_BROWSER = process.env.STREAM_BRIDGE_OPEN_BROWSER === '1' || Boolean(process.pkg);
 const SHOULD_OPEN_LAUNCHER = process.env.STREAM_BRIDGE_OPEN_LAUNCHER !== '0';
 
@@ -58,9 +59,11 @@ server.on('error', (error) => {
   if (error && error.code === 'EADDRINUSE') {
     const localUrl = `http://${HOST}:${PORT}`;
     console.warn(`[Streamer Bridge] ${localUrl} already in use; opening the existing bridge instead.`);
-    setTimeout(() => {
-      openClientWindow(localUrl);
-    }, 150);
+    if (!DISABLE_AUTO_OPEN) {
+      setTimeout(() => {
+        openClientWindow(localUrl);
+      }, 150);
+    }
     setTimeout(() => {
       process.exit(0);
     }, 450);
@@ -73,6 +76,9 @@ server.listen(PORT, HOST, () => {
   const localUrl = `http://${HOST}:${PORT}`;
   console.log(`[Streamer Bridge] Listening on ${localUrl}`);
   tickfinity.start();
+  if (DISABLE_AUTO_OPEN) {
+    return;
+  }
   if (SHOULD_OPEN_LAUNCHER) {
     setTimeout(() => {
       openClientWindow(localUrl);
