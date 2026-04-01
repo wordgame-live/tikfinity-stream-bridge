@@ -152,6 +152,12 @@
       color: #5ab6ff;
       text-decoration: none;
     }
+    .footer-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
   </style>
   <script>
     var bridgeBase = 'http://127.0.0.1:21420';
@@ -232,7 +238,10 @@
 
     <div class="footer">
       <span class="bridge-url">Bridge URL: 127.0.0.1:21420</span>
-      <a href="#" onclick="openUrl('https://wordtycoon.live/streambridge'); return false;">Help</a>
+      <span class="footer-links">
+        <a href="#" onclick="openUrl('https://wordtycoon.live/streambridge'); return false;">Help</a>
+        <a href="#" onclick="openUrl('https://github.com/johnrstanley11-gif/tycoon-stream-bridge'); return false;">Source</a>
+      </span>
     </div>
   </div>
 </body>
