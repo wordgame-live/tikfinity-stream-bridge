@@ -9,7 +9,9 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "package:win": "pkg . --targets node18-win-x64 --output dist/TycoonStreamBridge.exe",
+    "build:icon": "node scripts/build-icon.js",
+    "stamp:icon": "node scripts/stamp-exe-icon.js",
+    "package:win": "npm run build:icon && pkg . --targets node18-win-x64 --output dist/TycoonStreamBridge.exe && npm run stamp:icon",
     "package:folder": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package-folder.ps1"
   },
   "dependencies": {
@@ -18,7 +20,9 @@
     "ws": "^8.18.0"
   },
   "devDependencies": {
-    "pkg": "^5.8.1"
+    "pkg": "^5.8.1",
+    "png-to-ico": "^2.1.8",
+    "rcedit": "^4.0.1"
   },
   "pkg": {
     "assets": [
